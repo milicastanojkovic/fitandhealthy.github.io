@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fit and healthy</title>
+  <link href="css/flexboxgrid.css" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="logo"><a href="index.html">Fit and healthy</a></h1>
+    <ul class="main-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="onama.html">About</a></li>
+      <li><a href="galerija.html">Gallery</a></li>
+      <li><a href="kontakt.html">Contact</a></li>
+      <link href="css/header.css" rel="stylesheet" />
+    </ul>
+  </header>
+  <div class="proizvodi">
+    <div class="center">
+      <h2>Form</h2>
+      <p></p>
+      <p></p>
+    </div>
+    <div class="center">
+      <form id="forma" method="post" action="">
+        <div class="form-group col-sm-6">
+          <label for="ime" class="h4">Name and surname:</label>
+          <p></p>
+          <input name="ime" type="text" class="form-control" id="ime" placeholder="Name and surname" required>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="email" class="h4">Email:</label>
+          <p></p>
+          <input name="email" type="email" class="form-control" id="email" placeholder="Email" email>
+        </div>
+        <div class="form-group col-sm-12">
+          <label for="komponenta" class="h4">Product:</label>
+          <p></p>
+          <select name="komponenta" class="form-control" id="komponenta" required>
+            <option value="nutrition program">Nutrition program</option>
+            <option value="exercise program">Exercise program</option>
+            <option value="box (nutrition+exercise programs)">Box (nutrition+exercise programs)</option>
+            <option value="tips">Tips</option>
+          </select>
+        </div>
+        <div class="form-group col-sm-12">
+          <label for="tel" class="h4">Phone number:</label>
+          <p></p>
+          <input name="tel" type="number" class="form-control" id="tel" placeholder="Phone number" required>
+        </div>
+        <div class="form-group col-sm-12">
+          <label for="poruka" class="h4 ">Question:</label>
+          <p></p>
+          <textarea name="poruka" id="poruka" class="form-control" rows="5" placeholder="Question" required></textarea>
+        </div>
+        <input class="btn btn-info" type="submit" value="Submit" />
+      </form>
+      <div class="row">
+        <button class="btn btn-info" onclick="document.getElementById('date').innerHTML=Date()">Pogledajte trenutno
+          vreme</button>
+        <p id="date"></p>
+      </div>
+      <div id="srecni-broj"></div>
+    </div>
+  </div>
+  <footer style="position: absolute;	width: 100%;	bottom: 0;">
+    <div class="container">
+      <div class="social-icon">
+        <div class="col-md-4">
+          <ul class="social-network">
+            <li><a href="https://www.facebook.com/nadica.piliskic" class="fb prelaz" title="Facebook"><i
+                  class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/nadapiliskic/" class="instagram prelaz" title="Instagram"><i
+                  class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCoePngXnJ5fpBa6HCZt1Nmg" class="ytube prelaz"
+                title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-md-offset-4">
+        <div class="prava">
+          &copy; Fit and healty
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/poruke.js"></script>
+  <script type="text/javascript">
+    $.validator.setDefaults({
+      submitHandler: function () {
+        var vrednost = $('#komponenta').val();
+        var dat = new Date();
+        dat.setDate(dat.getDate());
+        var dd = dat.getDate();
+        var mm = dat.getMonth() + 1;
+        var y = dat.getFullYear();
+
+        var formatirano = dd + '/' + mm + '/' + y;
+        var text = "Izabrali ste ";
+        var text2 = ". Kontaktiracemo vas uskoro!";
+        var text3 = ". Zelimo vam prijatan dan!";
+        var res = text.concat(vrednost, text2, formatirano, text3);
+        alert(res);
+      }
+    });
+
+    $(document).ready(function () {
+      $("#forma").validate();
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      var broj = document.getElementById("srecni-broj");
+      broj.innerHTML = 'Tvoj srecni broj je ' + Math.floor(Math.random() * 100 + 1);
+    });
+  </script>
+</body>
+
+</html>
